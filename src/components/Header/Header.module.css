@@ -4,21 +4,27 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  height: 70px;
+  height: 60px;
   background-color: black;
   color: aliceblue;
 }
 .logo__container {
   max-width: 250px;
+  margin-left: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.logo__container a {
+   display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .logo__container img {
   padding-top: 5px;
   vertical-align: middle;
-  width: 80%;
+  width: 70%;
 }
 
 .delivery {
@@ -51,6 +57,7 @@
 }
 .search select {
   border: none;
+  background-color: rgb(214, 223, 223);
 }
 .search input {
   border: 1px solid white;
@@ -100,6 +107,7 @@
 }
 .cart {
   position: relative;
+  margin-right: 20px;
 }
 .cart span {
   position: absolute;
@@ -111,7 +119,7 @@
   color: orange;
 }
 
-.lower__container ul li:hover,
+.lower__container ul li:hover:not(:nth-child(2)),
 .order__container a:hover,
 .logo__container a:hover,
 .order__container a:hover,
@@ -126,18 +134,35 @@
 .lower__container ul {
   display: flex;
   list-style: none;
-  gap: 5px;
+  gap: 10px;
 }
 
 .lower__container ul li {
-  padding: 8px;
+  text-align: center;
+  justify-content: center;
+  padding: 4px;
+  margin: 3px;
 }
 .lower__container ul li:first-child {
   display: flex;
   gap: 2px;
   align-items: center;
 }
-
+.butimg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  background-color: azure;
+  text-align: center;
+  border-radius: 15px;
+  height: 10px;
+  width: 60px;
+  text-decoration: none;
+}
+.butimg img {
+  width: 12px;
+}
 @media screen and (max-width: 576px) {
   .header__container {
     display: flex;
