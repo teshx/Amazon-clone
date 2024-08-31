@@ -32,6 +32,8 @@
 .delivery p {
   font-size: 10px;
 }
+
+/* Search icon */
 .search {
   display: flex;
   justify-content: center;
@@ -57,6 +59,7 @@
 }
 .search svg {
   padding: 7px;
+  margin-top: 5.5px;
   background-color: #febd69;
   color: #1a1a1a;
 }
@@ -66,6 +69,8 @@
 .search:focus-within {
   border: 2px solid rgb(235, 161, 173);
 }
+
+/* Search icon  end */
 .order__container {
   display: flex;
   align-items: center;
@@ -105,6 +110,7 @@
   left: 16px;
   color: orange;
 }
+
 .lower__container ul li:hover,
 .order__container a:hover,
 .logo__container a:hover,
