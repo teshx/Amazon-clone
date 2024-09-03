@@ -33,6 +33,8 @@
   margin-top: -100px;
   display: grid;
   overflow: hidden;
+  overflow-x: scroll;
+  
   grid-template-columns: repeat(4, 1fr);
   place-items: center;
 }
