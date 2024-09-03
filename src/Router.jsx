@@ -16,7 +16,7 @@ function Routers() {
           <Route path="/auth" element={<Signup />} />
           <Route path="/payement" element={<Payemnt />} />
           <Route path="/order" element={<Orders />} />
-          <Route path="/catagory/:catagoryName" element={<Results />} />
+          <Route path="/category/:categoryName" element={<Results />} />
           <Route path="cart" element={<Cart />} />
         </Routes>
       </Router>

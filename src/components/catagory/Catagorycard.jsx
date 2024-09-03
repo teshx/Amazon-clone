@@ -4,11 +4,11 @@ import classes from "./catagory.module.css";
 function Catagorycard({ data }) {
   return (
     <div className={classes.catagory}>
-      <Link to={`/catagory/${data.name}`}>
+      <Link to={`/category/${data.name}`}>
         <span>
-          <h2>{data.title}</h2>
+          <h2>{data?.title}</h2>
         </span>
-        <img className={classes.img} src={data.img} alt="" />
+        <img className={classes.img} src={data?.img} alt="" />
         <p>{data.name}</p>
       </Link>
     </div>
