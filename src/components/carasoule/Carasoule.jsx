@@ -13,8 +13,8 @@ function CarasouleEeffect() {
         showIndicators={false}
         showThumbs={false}
       >
-        {imgData.map((images) => {
-          return <img src={images} alt="" />;
+        {imgData.map((images,i) => {
+          return <img key={i} src={images} alt="" />;
         })}
       </Carousel>
 
