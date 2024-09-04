@@ -3,6 +3,7 @@
 .header__container {
   display: flex;
   align-items: center;
+
   gap: 10px;
   height: 60px;
   background-color: black;
@@ -17,7 +18,7 @@
 }
 
 .logo__container a {
-   display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -175,4 +176,9 @@
   .language {
     display: none;
   }
+}
+.fixed {
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }

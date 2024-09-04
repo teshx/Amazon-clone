@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { SlLocationPin } from "react-icons/sl";
 import classes from "./Header.module.css";
 import { IoMdSearch } from "react-icons/io";
 import { BiCart } from "react-icons/bi";
 import Lowerheader from "./Lowerheader";
 import { Link } from "react-router-dom";
+import { DataContext } from "../Dataprovider/Dataprovider";
 function Header() {
+  const [{ basket }, dispach] = useContext(DataContext);
   return (
     <>
-      <section>
+      <section className={classes.fixed}>
         <section className={classes.header__container}>
           <div className={classes.logo__container}>
             {/* logo */}
-            <Link  to="/">
+            <Link to="/">
               <img
                 src="https://pngimg.com/uploads/amazon/small/amazon_PNG11.png"
                 alt="amazone logo"
@@ -46,7 +48,7 @@ function Header() {
           </div>
           {/* right side link */}
           <div className={classes.order__container}>
-            <Link  to="" className={classes.language}>
+            <Link to="" className={classes.language}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg/1024px-Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg.png"
                 alt=""
@@ -73,7 +75,7 @@ function Header() {
             <Link to="/cart" className={classes.cart}>
               {/* icon */}
               <BiCart size={35} />
-              <span>0</span>
+              <span>{basket.length}</span>
             </Link>
           </div>
         </section>
