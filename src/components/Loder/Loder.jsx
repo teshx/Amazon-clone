@@ -1,6 +1,7 @@
 import React from "react";
 import { FadeLoader } from "react-spinners";
 function Loder() {
+  //https://www.davidhu.io/react-spinners/storybook/?path=/docs/fadeloader--docs
   return (
     <div
       style={{

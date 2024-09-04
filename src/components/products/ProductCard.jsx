@@ -3,17 +3,22 @@ import { Rating } from "@mui/material";
 import CurrencyFormat from "../../currecyFormat/Curencyformat";
 import classes from "./product.module.css";
 import { Link } from "react-router-dom";
-function ProductCard({ products }) {
+function ProductCard({ products, flex, renderDes }) {
   const { description, id, image, price, rating, title } = products;
 
   return (
     <>
-      <div className={classes.card__container}>
+      <div
+        className={`${classes.card__container}  ${
+          flex ? classes.product_flexed : ""
+        }`}
+      >
         <Link to={`/products/${id}`}>
           <img src={image} alt="product" />
         </Link>
         <div>
           <h3>{title}</h3>
+          {renderDes && <p style={{ maxWidth: "750px" }}>{description}</p>}
 
           <div className={classes.Rating}>
             {/* reating */}
@@ -26,9 +31,8 @@ function ProductCard({ products }) {
             {/* pricing */}
             <CurrencyFormat amount={price} />
           </div>
+          <button className={classes.button}>add too cart</button>
         </div>
-
-        <button className={classes.button}>add too cart</button>
       </div>
     </>
   );

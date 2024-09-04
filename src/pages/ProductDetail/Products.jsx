@@ -27,7 +27,13 @@ function Products() {
 
   console.log(detail);
   return (
-    <Layout>{isloding ? <Loder /> : <ProductCard products={detail} />}</Layout>
+    <Layout>
+      {isloding ? (
+        <Loder />
+      ) : (
+        <ProductCard products={detail} flex={true} renderDes={true} />
+      )}
+    </Layout>
   );
 }
 
