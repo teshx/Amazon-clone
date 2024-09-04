@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import Products from "./pages/ProductDetail/Products";
 import Signup from "./pages/Auth/Signup";
 import Payemnt from "./pages/Payments/Payements";
 import Orders from "./pages/Orders/Orders";
 import Cart from "./pages/Cart/Cart";
 import Landing from "./pages/Landing/Landing";
-import Results from './pages/Results/Results'
+import Results from "./pages/Results/Results";
 function Routers() {
   return (
     <>
@@ -17,6 +17,7 @@ function Routers() {
           <Route path="/payement" element={<Payemnt />} />
           <Route path="/order" element={<Orders />} />
           <Route path="/category/:categoryName" element={<Results />} />
+          <Route path="/products/:id" element={<Products />} />
           <Route path="cart" element={<Cart />} />
         </Routes>
       </Router>
