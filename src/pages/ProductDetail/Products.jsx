@@ -31,7 +31,12 @@ function Products() {
       {isloding ? (
         <Loder />
       ) : (
-        <ProductCard products={detail} flex={true} renderDes={true} />
+        <ProductCard
+          renderADD={true}
+          products={detail}
+          flex={true}
+          renderDes={true}
+        />
       )}
     </Layout>
   );

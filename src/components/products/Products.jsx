@@ -28,7 +28,9 @@ function Products() {
       ) : (
         <section className={classes.product__container}>
           {product.map((Singleproduct, i) => {
-            return <ProductCard key={i} products={Singleproduct} />;
+            return (
+              <ProductCard renderADD={true} key={i} products={Singleproduct} />
+            );
           })}
         </section>
       )}

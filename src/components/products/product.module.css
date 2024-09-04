@@ -71,9 +71,9 @@
   width: 150px;
   margin-right: 40px;
 }
-.product_flexed {
+/* .product_flexed {
   height: 60vh;
-}
+} */
 .product_flexed img {
   width: 300px !important;
   height: auto;

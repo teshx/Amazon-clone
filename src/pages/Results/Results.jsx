@@ -35,7 +35,7 @@ function Results() {
 
           <div className={classes.product__container}>
             {results?.map((product, i) => (
-              <ProductCard key={i} products={product} />
+              <ProductCard renderADD={true} key={i} products={product} />
             ))}
           </div>
         </section>
