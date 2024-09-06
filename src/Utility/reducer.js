@@ -8,7 +8,7 @@ export const reducer = (state, action) => {
     case Type.ADD_TO_BASKET:
       //check if the ithem is exist
       const existingItem = state.basket.find((item) => {
-    return    item.id === action.item.id;
+        return item.id === action.item.id;
       });
 
       if (!existingItem) {
@@ -29,6 +29,23 @@ export const reducer = (state, action) => {
         };
       }
 
+    case Type.REMOVE_FROM_BASKET:
+      const index = state.basket.findIndex((item) => item.id === action.id);
+      let newBasket = [...state.basket];
+      if (index >= 0) {
+        if (newBasket[index].amount > 1) {
+          newBasket[index] = {
+            ...newBasket[index],
+            amount: newBasket[index].amount - 1,
+          };
+        } else {
+          newBasket.splice(index, 1);
+        }
+      }
+      return {
+        ...state,
+        basket: newBasket,
+      };
     default:
       return state;
   }

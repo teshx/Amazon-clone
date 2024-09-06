@@ -4,14 +4,32 @@ import Layout from "../../components/Layout/Layout";
 import { DataContext } from "../../components/Dataprovider/Dataprovider";
 import ProductCard from "../../components/products/ProductCard";
 import CurrencyFormat from "../../currecyFormat/Curencyformat";
-
+import { Type } from "../../Utility/action.type";
 import { Link } from "react-router-dom";
+import { FaArrowDown } from "react-icons/fa";
+import { FaArrowUp } from "react-icons/fa";
+
 function Cart() {
-  const [{ basket, user }, dispatch] = useContext(DataContext);
+  const [{ basket }, dispatch] = useContext(DataContext);
   console.log(basket);
   const total = basket.reduce((amount, item) => {
     return item.price * item.amount + amount;
   }, 0);
+
+  const increment = (item) => {
+    dispatch({
+      type: Type.ADD_TO_BASKET,
+      item,
+    });
+  };
+
+  const decrement = (id) => {
+    dispatch({
+      type: Type.REMOVE_FROM_BASKET,
+      id,
+    });
+  };
+
   return (
     <Layout>
       <section className={classes.container}>
@@ -22,14 +40,34 @@ function Cart() {
           {basket?.length == 0 ? (
             <p>OPS !! NO item in your cart </p>
           ) : (
-            basket?.map((item) => {
+            basket?.map((item, i) => {
               return (
-                <ProductCard
-                  products={item}
-                  renderDes={true}
-                  flex={true}
-                  renderADD={false}
-                />
+                <section className={classes.cart_product}>
+                  <ProductCard
+                    products={item}
+                    renderDes={true}
+                    flex={true}
+                    renderADD={false}
+                  />
+
+                  <div className={classes.btn_container}>
+                    <button
+                      className={classes.btn}
+                      onClick={() => increment(item)}
+                    >
+                      <FaArrowUp />
+                    </button>
+
+                    <span>{item.amount}</span>
+
+                    <button
+                      className={classes.btn}
+                      onClick={() => decrement(item.id)}
+                    >
+                      <FaArrowDown />
+                    </button>
+                  </div>
+                </section>
               );
             })
           )}
