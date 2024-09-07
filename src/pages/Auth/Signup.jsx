@@ -1,12 +1,7 @@
-import React from 'react'
-import classes from './signup.module.css'
-import Layout from '../../components/Layout/Layout'
+import React from "react";
+import classes from "./signup.module.css";
 function Signup() {
-  return (
-    <Layout>
-      SignUp
-    </Layout>
-  )
+  return <h1>SignUp</h1>;
 }
 
-export default Signup
+export default Signup;
