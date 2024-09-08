@@ -6,8 +6,9 @@ import { BiCart } from "react-icons/bi";
 import Lowerheader from "./Lowerheader";
 import { Link } from "react-router-dom";
 import { DataContext } from "../Dataprovider/Dataprovider";
+import { auth } from "../../Utility/firebase";
 function Header() {
-  const [{ basket }, dispach] = useContext(DataContext);
+  const [{ user, basket }, dispach] = useContext(DataContext);
 
   const totalItem = basket?.reduce((amount, item) => {
     return item.amount + amount;
@@ -47,7 +48,7 @@ function Header() {
             <input type="text" placeholder="Search Amazon" />
             {/* icon */}
             <span>
-              <IoMdSearch size={25} />
+              <IoMdSearch size={38} />
             </span>
           </div>
           {/* right side link */}
@@ -63,10 +64,19 @@ function Header() {
             </Link>
 
             {/* three component */}
-            <Link to="/auth">
+            <Link to={!user && "/auth"}>
               <div>
-                <p>Sign In</p>
-                <span>Account & lists</span>
+                {user ? (
+                  <>
+                    <p>HELLO:{user?.email?.split("@")[0]}</p>
+                    <span onClick={() => auth.signOut()}>Sign out</span>
+                  </>
+                ) : (
+                  <>
+                    <p>Sign In</p>
+                    <span>Account & lists</span>
+                  </>
+                )}
               </div>
             </Link>
 
