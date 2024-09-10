@@ -8,6 +8,9 @@ import CurrencyFormat from "../../currecyFormat/Curencyformat";
 
 import { axiosInstance } from "../../Api/axios";
 import { ClipLoader } from "react-spinners";
+
+import { db } from "../../Utility/firebase";
+import { useNavigate } from "react-router-dom";
 function Payements() {
   const [{ user, basket }] = useContext(DataContext);
   console.log(basket);
@@ -16,6 +19,8 @@ function Payements() {
   }, 0);
   const stripe = useStripe();
   const elements = useElements();
+
+  const Navigate = useNavigate();
   const [Carderror, setCarderror] = useState(null);
   const [prossesing, setprocess] = useState(false);
   const handelchage = (e) => {
@@ -38,20 +43,34 @@ function Payements() {
       const clintSecret = response.data?.client_secret;
 
       // 2; //Cliant side conformation
-      const conformation = await stripe.confirmCardPayment(clintSecret, {
+      const { paymentIntent } = await stripe.confirmCardPayment(clintSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
         },
       });
+      console.log(paymentIntent);
 
-      console.log(conformation);
+      // 3; // after confirm -->store db orders and clean basket
+
+      await db
+        .collection("user")
+        .doc(user.uid)
+        .collection("orders")
+        .doc(paymentIntent.id)
+        .set({
+          basket: basket,
+          amount: paymentIntent.amount,
+          created: paymentIntent.created,
+        });
+      console.log(db);
+      console.log(user);
       setprocess(false);
+
+      Navigate("/order", { state: { msg: "you have placed new order" } });
     } catch (error) {
       console.log(error);
       setprocess(false);
     }
-
-    // 3; // after confirm -->store db orders and clean basket
   };
 
   return (
