@@ -21,3 +21,38 @@
 .flex div {
   height: auto !important;
 }
+.payement_Card_container {
+  max-width: 350px;
+  width: 100%;
+}
+
+/* .Payement_details {
+} */
+.payement_prices {
+  padding: 20px;
+}
+.payement_prices div {
+  display: flex;
+  font-size: 16px;
+  gap: 10px;
+}
+
+.Payement_details button {
+  margin-top: 15px;
+  width: 100%;
+  border: none;
+  background-color: #d49644;
+  border-radius: 5px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.Payement_details button:hover {
+  background-color: #febd69;
+}
+
+@media screen and (max-width: 768px) {
+  .flex {
+    flex-direction: column;
+  }
+}
