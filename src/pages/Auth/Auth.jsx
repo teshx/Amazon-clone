@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from "./Auth.module.css";
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../../Utility/firebase";
 import {
   signInWithEmailAndPassword,
@@ -18,6 +18,8 @@ function Auth() {
   const [lodding, setLodding] = useState({ signin: false, signup: false });
   const [{ user }, dispach] = useContext(DataContext);
   const navigate = useNavigate();
+  const navestateData = useLocation();
+  console.log(navestateData);
   /*   console.log(email);
   console.log(password); */
 
@@ -37,7 +39,7 @@ function Auth() {
           });
 
           setLodding({ ...lodding, signin: false });
-          navigate("/");
+          navigate(navestateData?.state?.redirect || "/");
         })
         .catch((error) => {
           console.log(error);
@@ -53,7 +55,7 @@ function Auth() {
             user: userinfo.user,
           });
           setLodding({ ...lodding, signup: false });
-          navigate("/");
+          navigate(navestateData?.state?.redirect || "/");
         })
         .catch((error) => {
           console.log(error);
@@ -65,6 +67,7 @@ function Auth() {
   return (
     <section className={classes.login}>
       {/* logo */}
+
       <Link to="/">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/603px-Amazon_logo.svg.png"
@@ -75,6 +78,18 @@ function Auth() {
       {/* form */}
       <div className={classes.login_container}>
         <h1>Sign in</h1>
+        {navestateData?.state?.msg && (
+          <small
+            style={{
+              padding: "5px",
+              textAlign: "center",
+              color: "red",
+              fontWeight: "bold",
+            }}
+          >
+            {navestateData.state.msg}
+          </small>
+        )}
         <form action="">
           <div className={classes.logo_div}>
             <label htmlfor="email">Email</label>
